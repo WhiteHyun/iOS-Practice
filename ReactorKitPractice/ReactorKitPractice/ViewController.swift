@@ -9,44 +9,92 @@ import UIKit
 import ReactorKit
 import RxCocoa
 
-final class ViewController: UIViewController, StoryboardView {
+final class ViewController: UIViewController, View {
   
-  @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-  @IBOutlet weak var decreaseButton: UIButton!
-  @IBOutlet weak var increaseButton: UIButton!
-  @IBOutlet weak var numberLabel: UILabel!
+  private let activityIndicatorView: UIActivityIndicatorView = {
+    let activityIndicatorView = UIActivityIndicatorView()
+    activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+    return activityIndicatorView
+  }()
+  
+  private let decreaseButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("-", for: .normal)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }()
+  
+  private let increaseButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("+", for: .normal)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }()
+  
+  private let numberLabel: UILabel = {
+    let label = UILabel()
+    label.text = "0"
+    label.textAlignment = .center
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+  }()
+  
+  private let stackView: UIStackView = {
+    let stackView = UIStackView()
+    stackView.distribution = .fillEqually
+    stackView.spacing = 10
+    stackView.alignment = .fill
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    return stackView
+  }()
   
   var disposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    [self.decreaseButton, self.numberLabel, self.increaseButton].forEach {
+      self.stackView.addArrangedSubview($0)
+    }
+    self.view.addSubview(stackView)
+    self.view.addSubview(activityIndicatorView)
+    
+    NSLayoutConstraint.activate(
+      [
+        self.stackView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
+        self.stackView.heightAnchor.constraint(equalToConstant: 200),
+        self.stackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+        self.stackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+        self.activityIndicatorView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+        self.activityIndicatorView.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 20)
+      ]
+    )
   }
   
   func bind(reactor: CounterViewReactor) {
     // Action
-    increaseButton.rx.tap
+    self.increaseButton.rx.tap
       .map { Reactor.Action.increase }
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
     
-    decreaseButton.rx.tap
+    self.decreaseButton.rx.tap
       .map { Reactor.Action.decrease }
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
-
+    
     // State
     reactor.state
       .map { $0.value }
       .distinctUntilChanged()
       .map { "\($0)" }
-      .bind(to: numberLabel.rx.text)
+      .bind(to: self.numberLabel.rx.text)
       .disposed(by: disposeBag)
     
     
     reactor.state
       .map { $0.isLoading }
       .distinctUntilChanged()
-      .bind(to: activityIndicatorView.rx.isAnimating)
+      .bind(to: self.activityIndicatorView.rx.isAnimating)
       .disposed(by: disposeBag)
   }
 }
