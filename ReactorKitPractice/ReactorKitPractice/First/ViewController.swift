@@ -9,7 +9,7 @@ import UIKit
 import ReactorKit
 import RxCocoa
 
-final class ViewController: UIViewController, View {
+final class ViewController: BaseViewController, View {
   
   private let activityIndicatorView: UIActivityIndicatorView = {
     let activityIndicatorView = UIActivityIndicatorView()
@@ -39,6 +39,13 @@ final class ViewController: UIViewController, View {
     return label
   }()
   
+  private let nextButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("move to other VC", for: .normal)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }()
+  
   private let stackView: UIStackView = {
     let stackView = UIStackView()
     stackView.distribution = .fillEqually
@@ -52,12 +59,18 @@ final class ViewController: UIViewController, View {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+  }
+  
+  override func setupLayouts() {
     [self.decreaseButton, self.numberLabel, self.increaseButton].forEach {
       self.stackView.addArrangedSubview($0)
     }
     self.view.addSubview(stackView)
     self.view.addSubview(activityIndicatorView)
-    
+    self.view.addSubview(nextButton)
+  }
+  
+  override func setupConstraints() {
     NSLayoutConstraint.activate(
       [
         self.stackView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
@@ -65,7 +78,9 @@ final class ViewController: UIViewController, View {
         self.stackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
         self.stackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
         self.activityIndicatorView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-        self.activityIndicatorView.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 20)
+        self.activityIndicatorView.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 20),
+        self.nextButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
+        self.nextButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
       ]
     )
   }
@@ -81,6 +96,12 @@ final class ViewController: UIViewController, View {
       .map { Reactor.Action.decrease }
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
+    
+    self.nextButton.rx.tap
+      .map { Reactor.Action.nextButtonTapped }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
     
     // State
     reactor.state

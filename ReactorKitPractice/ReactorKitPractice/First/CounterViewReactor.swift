@@ -9,17 +9,20 @@ class CounterViewReactor: Reactor {
   enum Action {
     case increase
     case decrease
+    case nextButtonTapped
   }
   
   enum Mutation {
     case increaseValue
     case decreaseValue
     case setLoading(Bool)
+    case moveScreen(Bool)
   }
   
   struct State {
     var value: Int = 0
     var isLoading: Bool = false
+    var isMoved: Bool = false
   }
   
   func mutate(action: Action) -> Observable<Mutation> {
@@ -34,7 +37,6 @@ class CounterViewReactor: Reactor {
           Observable.just(Mutation.setLoading(false))
         ]
       )
-      //Observable.just(Mutation.increaseValue)
     case .decrease:
       return Observable.concat(
         [
@@ -44,7 +46,14 @@ class CounterViewReactor: Reactor {
           Observable.just(Mutation.setLoading(false))
         ]
       )
-      //Observable.just(Mutation.decreaseValue)
+      
+    case .nextButtonTapped:
+      return Observable.concat(
+        [
+          Observable.just(Mutation.moveScreen(true)),
+          Observable.just(Mutation.moveScreen(false))
+        ]
+         )
     }
   }
   
@@ -57,11 +66,11 @@ class CounterViewReactor: Reactor {
       newState.value += 1
     case .decreaseValue:
       newState.value -= 1
-    // case .setLoading(let bool):
     case let .setLoading(isLoading):
       newState.isLoading = isLoading
+    case let .moveScreen(boolValue):
+      newState.isMoved = boolValue
     }
-    
     return newState
   }
 }
