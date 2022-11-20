@@ -12,6 +12,11 @@
 		BA10CCD729291B35003682BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA10CCD629291B35003682BE /* ViewController.swift */; };
 		BA10CCDC29291B37003682BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA10CCDB29291B37003682BE /* Assets.xcassets */; };
 		BA10CCDF29291B37003682BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA10CCDD29291B37003682BE /* LaunchScreen.storyboard */; };
+		BA10CCE829291C90003682BE /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA10CCE729291C90003682BE /* Then */; };
+		BA10CCEB29291C9D003682BE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA10CCEA29291C9D003682BE /* SnapKit */; };
+		BA10CCED29291EE5003682BE /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA10CCEC29291EE5003682BE /* Preview.swift */; };
+		BA10CCEF29292035003682BE /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA10CCEE29292035003682BE /* CustomPageControl.swift */; };
+		BA10CCF12929E405003682BE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA10CCF02929E405003682BE /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,9 @@
 		BA10CCDB29291B37003682BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA10CCDE29291B37003682BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA10CCE029291B37003682BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA10CCEC29291EE5003682BE /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		BA10CCEE29292035003682BE /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
+		BA10CCF02929E405003682BE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA10CCE829291C90003682BE /* Then in Frameworks */,
+				BA10CCEB29291C9D003682BE /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +67,9 @@
 				BA10CCD229291B35003682BE /* AppDelegate.swift */,
 				BA10CCD429291B35003682BE /* SceneDelegate.swift */,
 				BA10CCD629291B35003682BE /* ViewController.swift */,
+				BA10CCEE29292035003682BE /* CustomPageControl.swift */,
+				BA10CCEC29291EE5003682BE /* Preview.swift */,
+				BA10CCF02929E405003682BE /* Home.swift */,
 				BA10CCDB29291B37003682BE /* Assets.xcassets */,
 				BA10CCDD29291B37003682BE /* LaunchScreen.storyboard */,
 				BA10CCE029291B37003682BE /* Info.plist */,
@@ -80,6 +93,10 @@
 			dependencies = (
 			);
 			name = PageControl;
+			packageProductDependencies = (
+				BA10CCE729291C90003682BE /* Then */,
+				BA10CCEA29291C9D003682BE /* SnapKit */,
+			);
 			productName = PageControl;
 			productReference = BA10CCCF29291B35003682BE /* PageControl.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +125,10 @@
 				Base,
 			);
 			mainGroup = BA10CCC629291B35003682BE;
+			packageReferences = (
+				BA10CCE629291C90003682BE /* XCRemoteSwiftPackageReference "Then" */,
+				BA10CCE929291C9D003682BE /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = BA10CCD029291B35003682BE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,8 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA10CCEF29292035003682BE /* CustomPageControl.swift in Sources */,
 				BA10CCD729291B35003682BE /* ViewController.swift in Sources */,
 				BA10CCD329291B35003682BE /* AppDelegate.swift in Sources */,
+				BA10CCED29291EE5003682BE /* Preview.swift in Sources */,
+				BA10CCF12929E405003682BE /* Home.swift in Sources */,
 				BA10CCD529291B35003682BE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +368,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BA10CCE629291C90003682BE /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		BA10CCE929291C9D003682BE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BA10CCE729291C90003682BE /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA10CCE629291C90003682BE /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		BA10CCEA29291C9D003682BE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA10CCE929291C9D003682BE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BA10CCC729291B35003682BE /* Project object */;
 }
