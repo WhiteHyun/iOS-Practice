@@ -6,33 +6,28 @@
 //
 
 import UIKit
+
+import SnapKit
+import Then
+
 final class ExpandablePracticeVC: UIViewController {
   
-  private lazy var collectionView: UICollectionView = {
+  private lazy var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init()).then {
     let layout = UICollectionViewCompositionalLayout.list(using: .init(appearance: .insetGrouped))
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-    collectionView.backgroundColor = .systemYellow
-    collectionView.dataSource = self
-    collectionView.register(ExpandableCollectionViewCell.self, forCellWithReuseIdentifier: ExpandableCollectionViewCell.id)
-    
-    return collectionView
-  }()
-  
-  
+    $0.collectionViewLayout = layout
+    $0.backgroundColor = .systemYellow
+    $0.dataSource = self
+    $0.register(ExpandableCollectionViewCell.self, forCellWithReuseIdentifier: ExpandableCollectionViewCell.id)
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
     view.addSubview(collectionView)
-    NSLayoutConstraint.activate(
-      [
-        collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-        collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-      ]
-    )
+    
+    collectionView.snp.makeConstraints { make in
+      make.edges.equalTo(self.view.safeAreaLayoutGuide)
+    }
   }
 }
 

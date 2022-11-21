@@ -11,23 +11,18 @@ final class ExpandableCollectionViewCell: UICollectionViewCell {
   
   static let id = "ExpandableCollectionViewCell"
   
-  let textLabel: UILabel = {
-    let label = UILabel()
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
+  let textLabel: UILabel = UILabel().then {
+    $0.textAlignment = .center
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     
     contentView.addSubview(textLabel)
     
-    
-    textLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-    textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-    textLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-    textLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    textLabel.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
   }
   
   required init?(coder: NSCoder) {
