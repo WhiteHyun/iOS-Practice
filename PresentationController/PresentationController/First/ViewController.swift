@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class ViewController: UIViewController {
+final class ViewController: BaseViewController {
   
   private let label = UILabel().then {
     $0.text = "This is Root View"
@@ -30,19 +30,14 @@ final class ViewController: UIViewController {
       $0.configuration?.cornerStyle = .capsule
     }
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setupLayouts()
-    setupConstraints()
-    setupStyles()
-  }
-  
-  private func setupLayouts() {
+  override func setupLayouts() {
+    super.setupLayouts()
     view.addSubview(button)
     view.addSubview(label)
   }
   
-  private func setupConstraints() {
+  override func setupConstraints() {
+    super.setupConstraints()
     button.snp.makeConstraints { make in
       make.center.equalToSuperview()
       make.width.equalTo(200)
@@ -55,7 +50,7 @@ final class ViewController: UIViewController {
     }
   }
   
-  private func setupStyles() {
-    view.backgroundColor = .systemBackground
+  override func setupStyles() {
+    super.setupStyles()
   }
 }

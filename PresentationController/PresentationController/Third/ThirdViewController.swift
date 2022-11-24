@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class ThirdViewController: UIViewController {
+final class ThirdViewController: BaseViewController {
   
   private let label = UILabel().then {
     $0.text = "Third View Controller"
@@ -18,25 +18,20 @@ final class ThirdViewController: UIViewController {
     $0.textAlignment = .center
   }
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setupLayouts()
-    setupConstraints()
-    setupStyles()
-  }
-  
-  private func setupLayouts() {
+  override func setupLayouts() {
+    super.setupLayouts()
     view.addSubview(label)
   }
   
-  private func setupConstraints() {
+  override func setupConstraints() {
+    super.setupConstraints()
     label.snp.makeConstraints { make in
       make.top.equalToSuperview().inset(20)
       make.horizontalEdges.equalToSuperview().inset(40)
     }
   }
   
-  private func setupStyles() {
-    view.backgroundColor = .systemBackground
+  override func setupStyles() {
+    super.setupStyles()
   }
 }

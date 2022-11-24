@@ -9,4 +9,8 @@ import UIKit
 
 final class FirstCoordinator: BaseCoordinator {
   
+  override func start() {
+    let vc = ViewController()
+    self.navigationController.pushViewController(vc, animated: true)
+  }
 }

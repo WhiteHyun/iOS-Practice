@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SheetViewController: UIViewController {
+final class SheetViewController: BaseViewController {
   
   private let label = UILabel().then {
     $0.text = "This is Bottom Sheet View"
@@ -21,19 +21,14 @@ final class SheetViewController: UIViewController {
     $0.textAlignment = .center
   }
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setupLayouts()
-    setupConstraints()
-    setupStyles()
-  }
-  
-  private func setupLayouts() {
+  override func setupLayouts() {
+    super.setupLayouts()
     view.addSubview(label)
     view.addSubview(descriptionLabel)
   }
   
-  private func setupConstraints() {
+  override func setupConstraints() {
+    super.setupConstraints()
     label.snp.makeConstraints { make in
       make.top.equalToSuperview().inset(20)
       make.horizontalEdges.equalToSuperview().inset(40)
@@ -45,8 +40,9 @@ final class SheetViewController: UIViewController {
     }
   }
   
-  private func setupStyles() {
-    view.backgroundColor = .systemBackground
+  override func setupStyles() {
+    super.setupStyles()
+    
     sheetPresentationController?.delegate = self
     sheetPresentationController?.selectedDetentIdentifier = .medium
     sheetPresentationController?.prefersGrabberVisible = true
