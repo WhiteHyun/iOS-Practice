@@ -15,6 +15,10 @@ final class SheetViewController: BaseViewController {
     $0.textAlignment = .center
   }
   
+  deinit {
+    print("SheetViewController Deinitialized")
+  }
+  
   private lazy var descriptionLabel = UILabel().then {
     $0.text = "\(sheetPresentationController?.selectedDetentIdentifier)"
     $0.numberOfLines = 0
@@ -56,7 +60,9 @@ extension SheetViewController: UISheetPresentationControllerDelegate {
   func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
     descriptionLabel.text = "\(sheetPresentationController.selectedDetentIdentifier!.rawValue)"
     if sheetPresentationController.selectedDetentIdentifier == .large {
-      self.modalPresentationStyle = .fullScreen
+      
+      guard let coordinator = self.coordinator as? SheetCoordinator else { return }
+      coordinator.moveToNewVC(self)
     }
   }
 }

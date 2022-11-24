@@ -21,8 +21,8 @@ final class ViewController: BaseViewController {
   private lazy var button = UIButton(
     configuration: .tinted(),
     primaryAction: .init(handler: { _ in
-      let nextVC = SheetViewController()
-      self.present(nextVC, animated: true)
+      guard let coordinator = self.coordinator as? FirstCoordinator else { return }
+      coordinator.presentSheet()
     })
   )
     .then {
@@ -52,5 +52,6 @@ final class ViewController: BaseViewController {
   
   override func setupStyles() {
     super.setupStyles()
+    view.backgroundColor = .systemCyan
   }
 }

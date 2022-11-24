@@ -33,5 +33,6 @@ final class ThirdViewController: BaseViewController {
   
   override func setupStyles() {
     super.setupStyles()
+    view.backgroundColor = .brown
   }
 }

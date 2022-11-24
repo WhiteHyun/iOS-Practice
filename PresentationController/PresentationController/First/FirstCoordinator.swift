@@ -11,6 +11,12 @@ final class FirstCoordinator: BaseCoordinator {
   
   override func start() {
     let vc = ViewController()
+    vc.coordinator = self
     self.navigationController.pushViewController(vc, animated: true)
+  }
+  
+  func presentSheet() {
+    let coordinator = SheetCoordinator(navigationController: self.navigationController)
+    self.start(childCoordinator: coordinator)
   }
 }
