@@ -15,6 +15,12 @@
 		BA3C786F292F0AC600FD34D0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA3C786E292F0AC600FD34D0 /* SnapKit */; };
 		BA3C7872292F0AD200FD34D0 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA3C7871292F0AD200FD34D0 /* Then */; };
 		BA3C7874292F0CB000FD34D0 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C7873292F0CB000FD34D0 /* SheetViewController.swift */; };
+		BA3C7876292F312000FD34D0 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C7875292F312000FD34D0 /* ThirdViewController.swift */; };
+		BA3C7878292F32F500FD34D0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C7877292F32F500FD34D0 /* Coordinator.swift */; };
+		BA3C787A292F333D00FD34D0 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C7879292F333D00FD34D0 /* BaseCoordinator.swift */; };
+		BA3C787E292F335A00FD34D0 /* FirstCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C787D292F335A00FD34D0 /* FirstCoordinator.swift */; };
+		BA3C7880292F337900FD34D0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C787F292F337900FD34D0 /* AppCoordinator.swift */; };
+		BA3C7882292F33B100FD34D0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C7881292F33B100FD34D0 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		BA3C7865292F0A6B00FD34D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA3C7867292F0A6B00FD34D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA3C7873292F0CB000FD34D0 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
+		BA3C7875292F312000FD34D0 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		BA3C7877292F32F500FD34D0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		BA3C7879292F333D00FD34D0 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		BA3C787D292F335A00FD34D0 /* FirstCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCoordinator.swift; sourceTree = "<group>"; };
+		BA3C787F292F337900FD34D0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		BA3C7881292F33B100FD34D0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +74,51 @@
 			children = (
 				BA3C7859292F0A6900FD34D0 /* AppDelegate.swift */,
 				BA3C785B292F0A6900FD34D0 /* SceneDelegate.swift */,
-				BA3C7873292F0CB000FD34D0 /* SheetViewController.swift */,
-				BA3C785D292F0A6900FD34D0 /* ViewController.swift */,
+				BA3C787B292F334500FD34D0 /* Base */,
+				BA3C787C292F335100FD34D0 /* First */,
+				BA3C7884292F342B00FD34D0 /* Second */,
+				BA3C7883292F342500FD34D0 /* Third */,
 				BA3C7862292F0A6B00FD34D0 /* Assets.xcassets */,
 				BA3C7864292F0A6B00FD34D0 /* LaunchScreen.storyboard */,
 				BA3C7867292F0A6B00FD34D0 /* Info.plist */,
 			);
 			path = PresentationController;
+			sourceTree = "<group>";
+		};
+		BA3C787B292F334500FD34D0 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BA3C7877292F32F500FD34D0 /* Coordinator.swift */,
+				BA3C787F292F337900FD34D0 /* AppCoordinator.swift */,
+				BA3C7881292F33B100FD34D0 /* BaseViewController.swift */,
+				BA3C7879292F333D00FD34D0 /* BaseCoordinator.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		BA3C787C292F335100FD34D0 /* First */ = {
+			isa = PBXGroup;
+			children = (
+				BA3C785D292F0A6900FD34D0 /* ViewController.swift */,
+				BA3C787D292F335A00FD34D0 /* FirstCoordinator.swift */,
+			);
+			path = First;
+			sourceTree = "<group>";
+		};
+		BA3C7883292F342500FD34D0 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				BA3C7875292F312000FD34D0 /* ThirdViewController.swift */,
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
+		BA3C7884292F342B00FD34D0 /* Second */ = {
+			isa = PBXGroup;
+			children = (
+				BA3C7873292F0CB000FD34D0 /* SheetViewController.swift */,
+			);
+			path = Second;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +201,12 @@
 			files = (
 				BA3C7874292F0CB000FD34D0 /* SheetViewController.swift in Sources */,
 				BA3C785E292F0A6900FD34D0 /* ViewController.swift in Sources */,
+				BA3C7878292F32F500FD34D0 /* Coordinator.swift in Sources */,
+				BA3C7876292F312000FD34D0 /* ThirdViewController.swift in Sources */,
+				BA3C787A292F333D00FD34D0 /* BaseCoordinator.swift in Sources */,
+				BA3C7882292F33B100FD34D0 /* BaseViewController.swift in Sources */,
+				BA3C787E292F335A00FD34D0 /* FirstCoordinator.swift in Sources */,
+				BA3C7880292F337900FD34D0 /* AppCoordinator.swift in Sources */,
 				BA3C785A292F0A6900FD34D0 /* AppDelegate.swift in Sources */,
 				BA3C785C292F0A6900FD34D0 /* SceneDelegate.swift in Sources */,
 			);

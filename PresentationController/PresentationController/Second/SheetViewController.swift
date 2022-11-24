@@ -50,14 +50,17 @@ final class SheetViewController: UIViewController {
     sheetPresentationController?.delegate = self
     sheetPresentationController?.selectedDetentIdentifier = .medium
     sheetPresentationController?.prefersGrabberVisible = true
+    sheetPresentationController?.largestUndimmedDetentIdentifier = .large
     sheetPresentationController?.detents = [.medium(), .large()]
   }
-  
 }
 
 
 extension SheetViewController: UISheetPresentationControllerDelegate {
   func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
     descriptionLabel.text = "\(sheetPresentationController.selectedDetentIdentifier!.rawValue)"
+    if sheetPresentationController.selectedDetentIdentifier == .large {
+      self.modalPresentationStyle = .fullScreen
+    }
   }
 }

@@ -22,7 +22,6 @@ final class ViewController: UIViewController {
     configuration: .tinted(),
     primaryAction: .init(handler: { _ in
       let nextVC = SheetViewController()
-      nextVC.modalPresentationStyle = .pageSheet
       self.present(nextVC, animated: true)
     })
   )
