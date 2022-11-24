@@ -12,10 +12,17 @@ import Then
 
 final class ViewController: UIViewController {
   
+  private let label = UILabel().then {
+    $0.text = "This is Root View"
+    $0.numberOfLines = 0
+    $0.textAlignment = .center
+  }
+  
   private lazy var button = UIButton(
     configuration: .tinted(),
     primaryAction: .init(handler: { _ in
       let nextVC = SheetViewController()
+      nextVC.modalPresentationStyle = .pageSheet
       self.present(nextVC, animated: true)
     })
   )
@@ -33,6 +40,7 @@ final class ViewController: UIViewController {
   
   private func setupLayouts() {
     view.addSubview(button)
+    view.addSubview(label)
   }
   
   private func setupConstraints() {
@@ -40,6 +48,11 @@ final class ViewController: UIViewController {
       make.center.equalToSuperview()
       make.width.equalTo(200)
       make.height.equalTo(45)
+    }
+    
+    label.snp.makeConstraints { make in
+      make.top.equalToSuperview().inset(20)
+      make.horizontalEdges.equalToSuperview().inset(40)
     }
   }
   
