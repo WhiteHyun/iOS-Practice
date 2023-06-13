@@ -9,3 +9,6 @@
 7. RxSwift
 8. SwiftLint
 9. VisualEffect
+10. Animated Custom PageControl
+11. Apple Login
+12. SwiftUI Basic
